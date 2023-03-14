@@ -7,84 +7,82 @@ module.exports = {
   list: {
     query: {
       page: Joi.number().min(0),
-      perPage: Joi.number()
-        .min(1)
-        .max(50),
+      perPage: Joi.number().min(1).max(50),
       email: Joi.string().email(),
-      role: Joi.string().valid(USER_ROLES)
-    }
+      role: Joi.string().valid(USER_ROLES),
+    },
   },
 
   stripe: {
     body: {
       amount: Joi.number().required(),
       paymentMethod: Joi.required(),
-      currency: Joi.string().required()
-    }
+      currency: Joi.string().required(),
+    },
   },
 
   stripeRetrive: {
     body: {
       paymentIntentId: Joi.required(),
-    }
+    },
   },
 
   // GET /v1/blockUser/:id
   block: {
     params: {
-      id: Joi.objectId().required()
-    }
+      id: Joi.objectId().required(),
+    },
   },
   // GET /v1/blockUser/:id
   higherAuthority: {
     body: {
-      code: Joi.string().required()
-    }
+      code: Joi.string().required(),
+    },
   },
 
   // GET /v1/user/deviceToken
   deviceToken: {
     body: {
-      deviceToken: Joi.string().required()
-    }
+      deviceToken: Joi.string().required(),
+    },
   },
 
   // GET /v1/user/muteNotification
   Notification: {
     headers: {
-      workspaceid: Joi.objectId().required()
+      workspaceid: Joi.objectId().required(),
     },
     body: {
-      roomId: Joi.objectId().required()
-    }
+      roomId: Joi.objectId().required(),
+    },
   },
 
   // GET /v1/user/:id
   get: {
     params: {
-      id: Joi.objectId().required()
-    }
+      id: Joi.objectId().required(),
+    },
   },
 
   // POST /v1/user/:id
   update: {
     params: {
-      id: Joi.objectId().required()
-    }
+      id: Joi.objectId().required(),
+    },
   },
 
   // POST /v1/user/masterSync
   masterSync: {
     body: {
-      date: Joi.date().required()
+      date: Joi.date().required(),
       // userId: Joi.objectId().required(),
-    }
+    },
   },
 
   // POST /v1/user/deleteWorkspaceUser/:id
   manageUser: {
     body: {
-      event: Joi.string().valid(["block", "unblock"])
-    }
-  }
+      event: Joi.string().valid(["block", "unblock"]),
+    },
+  },
 };

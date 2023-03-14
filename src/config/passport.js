@@ -4,7 +4,7 @@ const { jwtSecret } = require("./env-vars");
 
 const JwtOptions = {
   secretOrKey: jwtSecret,
-  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("Bearer")
+  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("Bearer"),
 };
 
 const JWT = async (payload, done) => {
@@ -12,12 +12,12 @@ const JWT = async (payload, done) => {
     var condition = {
       $and: [
         {
-          _id: payload.sub
+          _id: payload.sub,
         },
         {
-          status: payload.status
-        }
-      ]
+          status: payload.status,
+        },
+      ],
     };
     const user = await User.findOne(condition);
     if (user) {

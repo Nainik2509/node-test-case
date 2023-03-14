@@ -1,7 +1,7 @@
-const moment = require('moment')
+const moment = require("moment");
 const Utilities = require("./util");
 class FindByIdModelUtilities {
-  constructor () {
+  constructor() {
     this.utils = new Utilities();
     this._userModel = require("../api/models/user");
   }
@@ -28,7 +28,5 @@ class FindByIdModelUtilities {
       throw error;
     }
   }
-
-
 }
 module.exports = FindByIdModelUtilities;

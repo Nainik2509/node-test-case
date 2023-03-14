@@ -6,49 +6,44 @@ module.exports = {
   // POST /v1/banner/add
   add: {
     body: {
-      meetDate: Joi.date()
-        .iso()
-        .required(),
+      meetDate: Joi.date().iso().required(),
       bidPeriod: Joi.number().valid(BID_PERIOD),
       minBid: Joi.number().required(),
-    }
+    },
   },
 
   // GET /v1/banner/list
   list: {
     query: {
       page: Joi.number().min(0),
-      perPage: Joi.number()
-        .min(1)
-        .max(50)
-    }
+      perPage: Joi.number().min(1).max(50),
+    },
   },
 
   placeBid: {
     body: {
       biddingId: Joi.objectId().required(),
       newBid: Joi.number().required(),
-    }
+    },
   },
 
   agoraToken: {
     body: {
       biddingId: Joi.objectId().required(),
-    }
+    },
   },
-
 
   // GET /v1/banner/:id
   get: {
     params: {
-      id: Joi.objectId().required()
-    }
+      id: Joi.objectId().required(),
+    },
   },
 
   // POST /v1/banner/:id
   update: {
     params: {
-      id: Joi.objectId().required()
+      id: Joi.objectId().required(),
     },
     // body: {
     //   title: Joi.string(),
@@ -62,5 +57,5 @@ module.exports = {
     //   }),
     //   status: Joi.string().valid(STATUSES)
     // }
-  }
+  },
 };

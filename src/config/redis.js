@@ -5,11 +5,11 @@ const logger = require("./logger");
 
 const client = redis.createClient({
   host: redisHost,
-  port: redisPort
+  port: redisPort,
 });
 
 client.on("connect", () => logger.info("Backup engine is Running"));
-client.on("error", err =>
+client.on("error", (err) =>
   logger.error(`Error checking Redis backup engine ${err}`)
 );
 exports.TTGet = promisify(client.get).bind(client);

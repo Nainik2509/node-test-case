@@ -4,9 +4,7 @@ module.exports = {
   // POST /v1/attachment/upload
   weather: {
     body: {
-      city: Joi.string()
-        .max(128)
-        .required()
-    }
-  }
+      city: Joi.string().max(128).required(),
+    },
+  },
 };

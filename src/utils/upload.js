@@ -7,7 +7,7 @@ const {
   INVALID_FILE_TYPE,
   ENOT_ACCESS,
   FORBIDDEN,
-  BAD_REQUEST
+  BAD_REQUEST,
 } = require("./constants");
 
 const fileFilter = (req, file, cb) => {
@@ -15,7 +15,7 @@ const fileFilter = (req, file, cb) => {
   if (!type) {
     const err = new APIError({
       message: INVALID_FILE_TYPE,
-      status: BAD_REQUEST
+      status: BAD_REQUEST,
     });
     return cb(err, false);
   }
@@ -32,11 +32,11 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = path.join(__dirname, "../public/" + req.query.folder + "/");
     if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, err => {
+      fs.mkdirSync(dir, (err) => {
         const error = new APIError({
           errors: [err],
           message: ENOT_ACCESS,
-          status: FORBIDDEN
+          status: FORBIDDEN,
         });
         return cb(error, false);
       });
@@ -46,21 +46,17 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     var ext = file.originalname.split(".").pop();
     var name =
-      new Date().getTime() +
-      "_" +
-      Math.random()
-        .toString(36)
-        .substr(2, 5);
+      new Date().getTime() + "_" + Math.random().toString(36).substr(2, 5);
     cb(null, `${name}.${ext}`);
-  }
+  },
 });
 
 const upload = multer({
   storage,
   // fileFilter,
   limits: {
-    fileSize: 1024 * 1024 * 5 // we are allowing only 5 MB files
-  }
+    fileSize: 1024 * 1024 * 5, // we are allowing only 5 MB files
+  },
 });
 
 module.exports = upload;

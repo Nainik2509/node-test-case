@@ -4,7 +4,7 @@ const {
   UNAUTHORIZED,
   LOGGED_IN,
   FORBIDDEN,
-  ADMIN
+  ADMIN,
 } = require("../utils/constants");
 const APIError = require("../utils/APIError");
 
@@ -13,7 +13,7 @@ const handleJWT = (req, res, next, roles) => async (err, user, info) => {
   const apiError = new APIError({
     message: error ? error.message : "Unauthorized",
     status: UNAUTHORIZED,
-    stack: error ? error.stack : undefined
+    stack: error ? error.stack : undefined,
   });
   if (err || !user) {
     return next(apiError);
@@ -38,9 +38,11 @@ const handleJWT = (req, res, next, roles) => async (err, user, info) => {
   return next();
 };
 
-exports.Authorize = (roles = AUTH_ROLES) => (req, res, next) =>
-  passport.authenticate(
-    "jwt",
-    { session: false },
-    handleJWT(req, res, next, roles)
-  )(req, res, next);
+exports.Authorize =
+  (roles = AUTH_ROLES) =>
+  (req, res, next) =>
+    passport.authenticate(
+      "jwt",
+      { session: false },
+      handleJWT(req, res, next, roles)
+    )(req, res, next);

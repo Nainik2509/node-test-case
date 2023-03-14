@@ -7,8 +7,8 @@ const MorganProd = {
     return res.statusCode <= 400;
   },
   stream: fs.createWriteStream(path.join(__dirname, "../../access.log"), {
-    flags: "a"
-  })
+    flags: "a",
+  }),
 };
 
 module.exports = {
@@ -28,8 +28,8 @@ module.exports = {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
-      useFindAndModify: false
-    }
+      useFindAndModify: false,
+    },
   },
   rateLimitTime: process.env.RATE_LIMIT_TIME,
   rateLimitRequest: process.env.RATE_LIMIT_REQUEST,
@@ -38,5 +38,5 @@ module.exports = {
   Level: process.env.NODE_ENV === "production" ? "error" : "debug",
   morganConfig: process.env.NODE_ENV === "production" ? MorganProd : {},
   redisPort: process.env.REDIS_PORT,
-  redisHost: process.env.REDIS_HOST
+  redisHost: process.env.REDIS_HOST,
 };

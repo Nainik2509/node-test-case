@@ -44,7 +44,15 @@ module.exports = {
   DEFAULT_IMAGE: "images/placeholder.jpeg",
   STATUSES: ["active", "deactive", "blocked"],
   REMARK_TYPE: ["add", "remove", "create"],
-  ORDER_STATUS: ["inQueue", "pending", "paymentUnverified", "billAttached", "halfDispatched", "dispatched", "cancelled"],
+  ORDER_STATUS: [
+    "inQueue",
+    "pending",
+    "paymentUnverified",
+    "billAttached",
+    "halfDispatched",
+    "dispatched",
+    "cancelled",
+  ],
   BILL_STATUS: ["paid", "unpaid", "cancelled"],
 
   // Messages
@@ -78,5 +86,5 @@ module.exports = {
   SEND_OTP_SUCCESS: "OTP !",
   SEND_AUTHORIZATION_HEADER: "Credentail's for your account.!",
   BOOKING_CANCEL_HEADER: "Booking cancelled!",
-  BOOKING_CONFIRM_HEADER: "Booking confirmed!"
+  BOOKING_CONFIRM_HEADER: "Booking confirmed!",
 };

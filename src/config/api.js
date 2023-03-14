@@ -6,7 +6,7 @@ var API = axios.create({
   // baseURL: "http://165.227.99.37:80",
   // baseURL: "https://scapper.app:8080/",
 
-  responseType: "json"
+  responseType: "json",
 });
 
 export default API;

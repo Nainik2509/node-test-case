@@ -29,23 +29,21 @@ module.exports = {
   list: {
     query: {
       page: Joi.number().min(0),
-      perPage: Joi.number()
-        .min(1)
-        .max(50)
-    }
+      perPage: Joi.number().min(1).max(50),
+    },
   },
 
   // GET /v1/banner/:id
   get: {
     params: {
-      id: Joi.objectId().required()
-    }
+      id: Joi.objectId().required(),
+    },
   },
 
   // POST /v1/banner/:id
   update: {
     params: {
-      id: Joi.objectId().required()
+      id: Joi.objectId().required(),
     },
     // body: {
     //   title: Joi.string(),
@@ -59,5 +57,5 @@ module.exports = {
     //   }),
     //   status: Joi.string().valid(STATUSES)
     // }
-  }
+  },
 };

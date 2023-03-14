@@ -2,10 +2,9 @@ const Utilities = require("./util");
 const FindByIdModelUtilities = require("./FindByIdModelUtils");
 
 class CreateModelUtilities {
-  constructor () {
+  constructor() {
     this.utils = new Utilities();
     this.byIdUtils = new FindByIdModelUtilities();
   }
-
 }
 module.exports = CreateModelUtilities;

@@ -2,7 +2,7 @@ const { createLogger, format, transports } = require("winston");
 const { Level, env } = require("./env-vars");
 
 // { error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }
-const formatParams = info => {
+const formatParams = (info) => {
   const { timestamp, level, message, ...args } = info;
   const ts = timestamp.slice(0, 19).replace("T", " ");
 
@@ -26,7 +26,7 @@ const transportArray =
 const logger = createLogger({
   Level,
   format: Format,
-  transports: transportArray
+  transports: transportArray,
 });
 
 module.exports = logger;
